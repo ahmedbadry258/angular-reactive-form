@@ -1,0 +1,65 @@
+
+<div class="container">
+    
+<h2>User Settings</h2>
+<form  #form ="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input    id="name" name="name" placeholder="Name" class="form-control is-invalid"  
+        [(ngModel)]="userSetting.name" type="text" required #classTest #propertyTest="ngModel" 
+        #nameField="ngModel" [class.field-error]=" form.submitted &&nameField.invalid"
+        (blur)="onBlur(nameField)"
+        />
+        <div [hidden]="!form.submitted || nameField.valid"
+        class="alert alert-danger"
+        >Enter A Name</div>
+    </div>
+  
+<div class="form-check form-group">
+    <input class="form-check-input"  name="emailOffers"  id="emailOffers" type="checkbox"  [(ngModel)]="userSetting.emailOffers"/>
+    <label for="emailOffers" class="form-check-label">Email Offers</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="lightInterface" id="lightInterface" value="light" [(ngModel)]="userSetting.interfaceStyle">
+    <label class="form-check-label" for="lightInterface">
+      Light
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="mediumInterface" id="mediumInterface" value="medium">
+    <label class="form-check-label" for="mediumInterface">
+   Medium
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="darkInterface" id="darkInterface" value="dark">
+    <label class="form-check-label" for="darkInterface">
+   Dark
+    </label>
+  </div>
+  <div class="form-group">
+  <select class="form-select" id="subscribeType"  [(ngModel)]="userSetting.subscriptionType" #propertyTest="ngModel">
+    
+    <option value="1" >Monthly</option>
+    <option value="2">Annual</option>
+    <option value="3">Lifetime</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="notes">notes</label>
+  <textarea    id="notes" name="notes" placeholder="notes...." rows="3" class="form-control"  [(ngModel)]="userSetting.notes" ></textarea>
+</div>
+
+<button   class="btn btn-primary">Send</button>
+
+</form>
+</div>
+<h4> nameField {{nameField.pristine}}</h4>
+<h4>{{userSetting|json}}</h4>
+<h3>{{classTest.className}}</h3>
+<h4>Dirty : {{propertyTest.dirty}}</h4>
+<h4>pristine : {{propertyTest.pristine}}</h4>
+<h4>Touched : {{propertyTest.touched}}</h4>
+<h4>untouched : {{propertyTest.untouched}}</h4>
+<h4>valid : {{propertyTest.valid}}</h4>
+<h4>invalid : {{propertyTest.invalid}}</h4>

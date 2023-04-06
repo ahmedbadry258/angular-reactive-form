@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #userName="ngForm" >
+    <div >
+        <label>Region Id</label>
+        <input type="input" name="regionId" [(ngModel)]="region.regionId" />
+    </div>
+    <div >
+        <label>Region Name</label>
+        <input type="input" name="regionName" [(ngModel)]="region.regionName" />
+    </div>
+    <div>
+        <button class="btn btn-primary" > Submit</button>
+    </div>
+</form>
